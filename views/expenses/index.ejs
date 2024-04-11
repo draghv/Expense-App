@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h1><%= pageTitle %></h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% expenses.forEach(expense => { %>
+                <tr>
+                    <th scope="row"><%= expense.id %></th>
+                    <td><%= expense.description %></td>
+                    <td>$<%= expense.amount %></td>
+                    <td>
+                        <a href="/edit-expense/<%= expense.id %>">Edit</a>
+                        <a href="/delete-expense/<%= expense.id %>">Delete</a>
+                    </td>
+                </tr>
+            <% }); %>
+            </tbody>
+          </table>
+    </main>
+
+    <%- include('../includes/end.ejs') %>
